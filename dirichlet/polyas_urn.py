@@ -11,7 +11,7 @@ ITERATIONS = 256
 INTERVAL = 1
 INTERVAL = 0.05
 
-colours = green, magenta, gray, red, cyan, yellow, plain, blue
+colours = (green, magenta, gray, red, cyan, yellow, plain, blue)
 
 def printfunc(x): print x
 
@@ -36,14 +36,14 @@ def dirichlet_draw_from(urn):
     return i, urn[:i] + [urn[i]+BETA] + urn[i+1:]
                        
 def print_urn(urn):
-    for i in range(len(urn)):
-        print colours[i%len(colours)]('-' * urn[i] + ' (' + str(urn[i]) + ') ')
+    for i, thing in enumerate(urn):
+        print colours[i%len(colours)]('-' * thing + ' (' + str(thing) + ') ')
 
 def print_urn_by_rank(urn):
     print_urn(reversed(sorted(urn)))
     
-urn = [1,5,8]
-draw = polya_draw_from
+# urn = [1,5,8]
+# draw = polya_draw_from
 
 urn = [ALPHA]
 draw = dirichlet_draw_from
